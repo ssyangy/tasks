@@ -1,0 +1,32 @@
+// Place all the styles related to the Tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html, body{
+background:#b8cd88;    
+font-size:12px;
+}
+.task{
+background:#fff;
+padding:5px 10px 3px;      
+border:1px solid #aaa;
+-moz-border-radius: 5px;
+-webkit-border-radius: 25px;
+border-radius: 5px;
+}
+.task .checkbox{
+margin-right:20px;
+}
+.completed .task{
+color:#bbb;
+}
+.legend{
+margin:20px 0 10px;
+}                
+.edit, .delete{
+float:right;
+margin-top:1px;   
+margin-right:5px;
+}
+.edit{
+margin-right:10px;
+}
