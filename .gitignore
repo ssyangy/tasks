@@ -2,4 +2,5 @@ tasks.tmproj
 log/*
 tmp
 .DS_Store
-db/*
+db/*.sqlite3
+db/schema.rb
