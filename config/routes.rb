@@ -3,6 +3,7 @@ Tasks::Application.routes.draw do
 
   devise_for :users
 
+  get "home/after_sign_in"
   get "home/index"
 
   resources :tasks do

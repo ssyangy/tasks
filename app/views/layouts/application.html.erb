@@ -8,7 +8,16 @@
 </head>
 <body>
 
-<% if signed_in? %><div class='account'><span><%= current_user.email %>, </span><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></div><% end %>
+<% if signed_in? %>
+<div class='topbar'>
+	<div class='projects'>
+		<%= link_to '<< Projects', projects_path %><%= link_to 'Tasks', tasks_path %>
+	</div>
+	<div class='account'>
+		<span>Hello <%= current_user.email %>, </span><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
+	</div>
+</div>
+<% end %>
 <div class='content fix'>
 	<%= yield %>
 </div>

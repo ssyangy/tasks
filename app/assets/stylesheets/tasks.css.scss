@@ -2,9 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 html, body{
-background:#b8cd88;
+/*background:#b8cd88;*/
 /*background:#efefef;*/
+background:#ddccc4;
 font-size:12px;
+margin:5px 10px;
 }
 .fix{
 clear:both;
@@ -40,7 +42,16 @@ font-size:32px;
 margin-top:150px;
 color:#00b499;
 }
-.account{
+.topbar{
+padding-bottom:20px;
+}
+.topbar .projects{
+float:left;
+}
+.topbar .projects a{
+margin-right:10px;
+}
+.topbar .account{
 float:right;
 }
 input[type="submit"]{
@@ -51,4 +62,7 @@ margin-bottom:30px;
 }
 .content .todo{
 margin-top:20px;
+}
+.guide p form{
+display:inline;
 }
