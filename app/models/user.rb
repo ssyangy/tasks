@@ -7,5 +7,6 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
-  has_many :todos, :class_name => 'Task', :foreign_key => 'assignee_id'
+  has_many :todos, :class_name => 'Task', :foreign_key => 'assignee_id'  
+  has_many :projects, :class_name => 'Project', :foreign_key => 'owner_id'
 end
