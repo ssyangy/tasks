@@ -1,9 +1,13 @@
 class TasksController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.where('status = 0').order("content")
-    @completed = Task.where('status = 1').order("updated_at DESC")
+    @tasks = current_user.todos.where('status = 0').order('created_at DESC')
+    @completed = current_user.todos.where('status = 1').order('updated_at DESC')
+  #  @tasks = Task.where('status = 0').order("content")
+  #  @completed = Task.where('status = 1').order("updated_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -63,6 +67,7 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(params[:task])
+    @task.author_id = 
 
     respond_to do |format|
       if @task.save

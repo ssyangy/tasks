@@ -2,8 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 html, body{
-background:#b8cd88;    
+background:#b8cd88;
+/*background:#efefef;*/
 font-size:12px;
+}
+.fix{
+clear:both;
 }
 .task{
 background:#fff;
@@ -29,4 +33,22 @@ margin-right:5px;
 }
 .edit{
 margin-right:10px;
+}
+
+.login h1{
+font-size:32px;
+margin-top:150px;
+color:#00b499;
+}
+.account{
+float:right;
+}
+input[type="submit"]{
+font-size:16px;
+}
+.content h1{
+margin-bottom:30px;
+}
+.content .todo{
+margin-top:20px;
 }
