@@ -2,11 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 html, body{
-/*background:#b8cd88;*/
+background:#b8cd88;
 /*background:#efefef;*/
-background:#ddccc4;
+/*background:#ddccc4;*/
 font-size:12px;
-margin:5px 10px;
+margin:5px 6px;
+}             
+a, a:visited{
+color:#0f75bc;
+}
+a:hover{
+color:#fff;
 }
 .fix{
 clear:both;
@@ -32,6 +38,7 @@ margin:20px 0 10px;
 float:right;
 margin-top:1px;   
 margin-right:5px;
+cursor:pointer;
 }
 .edit{
 margin-right:10px;
@@ -62,7 +69,4 @@ margin-bottom:30px;
 }
 .content .todo{
 margin-top:20px;
-}
-.guide p form{
-display:inline;
 }
