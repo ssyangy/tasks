@@ -1,7 +1,5 @@
+<%= button_to '+ Collaborator', nil, :class => 'rt fix'  %>
 <h1><%= @project.name %></h1>
 
 <p id="notice"><%= notice %></p>
-<%= button_to '+ New Task', new_task_path, :method => :get %>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= button_to '+ Task', new_task_path, :method => :get %>
