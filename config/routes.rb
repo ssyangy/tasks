@@ -1,5 +1,8 @@
 Tasks::Application.routes.draw do
-  resources :projects
+
+  resources :projects do
+    resources :collaborators
+  end
 
   devise_for :users
 

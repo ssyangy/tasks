@@ -1,5 +1,7 @@
-<%= button_to '+ Collaborator', nil, :class => 'rt fix'  %>
+<div class="reminder rt fix">
+	Not fighting alone? <%= link_to 'Invite Collaborators', project_collaborators_path(@project), :method => :get  %>
+</div>
 <h1><%= @project.name %></h1>
 
 <p id="notice"><%= notice %></p>
-<%= button_to '+ Task', new_task_path, :method => :get %>
+<%= button_to '+ New Task', new_task_path, :method => :get %>
