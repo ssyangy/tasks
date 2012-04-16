@@ -2,6 +2,48 @@
 	Not fighting alone? <%= link_to 'Invite Collaborators', project_collaborators_path(@project), :method => :get  %>
 </div>
 <h1><%= @project.name %></h1>
+<div id="file-uploader-demo1">		
+	<noscript>			
+		<p>Please enable JavaScript to use file uploader.</p>
+		<!-- or put a simple form for upload here -->
+	</noscript>         
+</div>
+<br />
+<br />
+<br />
+<div id="file-uploader-demo2">		
+	<noscript>			
+		<p>Please enable JavaScript to use file uploader.</p>
+		<!-- or put a simple form for upload here -->
+	</noscript>         
+</div>
 
 <p id="notice"><%= notice %></p>
 <%= button_to '+ New Task', new_task_path, :method => :get %>
+
+<script>        
+	function createUploader(){            
+	    var uploader = new qq.FileUploader({
+	        element: document.getElementById('file-uploader-demo1'),
+	        action: 'do-nothing.htm',
+	        debug: true
+	    });           
+	}
+
+	function createUploader2(){            
+	    var uploader = new qq.FileUploader({
+	        element: document.getElementById('file-uploader-demo2'),
+	        action: 'do-nothing.htm',
+	        debug: true
+	    });           
+	}
+	
+	function createAll(){
+		createUploader();
+		createUploader2();
+	}
+
+    // in your app create uploader as soon as the DOM is ready
+    // don't wait for the window to load  
+    window.onload = createAll;     
+</script>
