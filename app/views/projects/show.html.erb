@@ -7,17 +7,16 @@
 		<p>Please enable JavaScript to use file uploader.</p>
 		<!-- or put a simple form for upload here -->
 	</noscript>         
-</div>
+</div> <!--
 <br />
 <br />
 <br />
 <div id="file-uploader-demo2">		
 	<noscript>			
 		<p>Please enable JavaScript to use file uploader.</p>
-		<!-- or put a simple form for upload here -->
 	</noscript>         
 </div>
-
+-->
 <p id="notice"><%= notice %></p>
 <%= button_to '+ New Task', new_task_path, :method => :get %>
 
@@ -40,7 +39,7 @@
 	
 	function createAll(){
 		createUploader();
-		createUploader2();
+//		createUploader2();
 	}
 
     // in your app create uploader as soon as the DOM is ready
