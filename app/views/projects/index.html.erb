@@ -1,13 +1,21 @@
+<div class="pull-right h1-buttons">
+<%= button_to '+ New Project', new_project_path, :method => :get, :class => "btn btn-primary" %>
+</div>
 <h1>Projects</h1>
-<%= button_to '+ New Project', new_project_path, :method => :get %>
 <br />
-<table>
-<% @projects.each do |project| %>
-  <tr>
-    <td width="200"><%= project.name %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+
+<table class="" style="width:400px;">
+	<tbody>
+	<% @projects.each do |project| %>
+	  <tr>
+	    <td>→ <%= link_to project.name, project %></td>
+		<td width="120">
+			<div class="btn-group">
+			  <button class="btn btn-small"><%= link_to 'Edit', edit_project_path(project) %></button>
+			  <button class="btn btn-small"><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></button>
+			</div>
+		</td>
+	  </tr>
+	<% end %>
+	</tbody>
 </table>

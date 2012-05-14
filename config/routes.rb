@@ -1,6 +1,7 @@
 Tasks::Application.routes.draw do
 
   resources :projects do
+    resources :tasks
     resources :collaborators
   end
 
@@ -9,12 +10,12 @@ Tasks::Application.routes.draw do
   get "home/after_sign_in"
   get "home/index"
 
-  resources :tasks do
-    member do
-      get 'complete'
-      get 'uncomplete'
-    end
-  end
+  # resources :tasks do
+  #   member do
+  #     get 'complete'
+  #     get 'uncomplete'
+  #   end
+  # end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

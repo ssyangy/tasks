@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
+    @project = Project.find(params[:project_id])
     @tasks = current_user.todos.where('status = 0').order('created_at DESC')
     @completed = current_user.todos.where('status = 1').order('updated_at DESC')
   #  @tasks = Task.where('status = 0').order("content")
@@ -49,6 +50,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   # GET /tasks/new.json
   def new
+    @project = Project.find(params[:project_id])
     @task = Task.new
     @task.status = 0
 
@@ -60,18 +62,20 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+    @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
+    @project = Project.find(params[:project_id])
     @task = Task.new(params[:task])
-    @task.author_id = 
+#    @task.author_id = 
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to tasks_url, notice: 'Task was successfully created.' }
+        format.html { redirect_to project_tasks_url(@project), notice: 'Task was successfully created.' }
         format.json { render json: @task, status: :created, location: @task }
       else
         format.html { render action: "new" }
@@ -83,11 +87,12 @@ class TasksController < ApplicationController
   # PUT /tasks/1
   # PUT /tasks/1.json
   def update
+    @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to tasks_url, notice: 'Task was successfully updated.' }
+        format.html { redirect_to project_tasks_url(@project), notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

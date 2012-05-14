@@ -1,5 +1,8 @@
-<div class="reminder rt fix">
-	Not fighting alone? <%= link_to 'Invite Collaborators', project_collaborators_path(@project), :method => :get  %>
+<div class="pull-right h1-buttons">
+	<div class="btn-group">
+	  <button class="btn btn-success" id="collaborators">Invite Collaborators</button>
+	  <button class="btn btn-primary" id="new">+ New Tasks</button>
+	</div>
 </div>
 <h1><%= @project.name %></h1>
 <div id="file-uploader-demo1">		
@@ -16,11 +19,19 @@
 		<p>Please enable JavaScript to use file uploader.</p>
 	</noscript>         
 </div>
+<%= link_to 'Invite Collaborators', project_collaborators_path(@project) %>
+<%= link_to "+ New Task", new_project_task_path(@project) %>
 -->
 <p id="notice"><%= notice %></p>
-<%= button_to '+ New Task', new_task_path, :method => :get %>
 
-<script>        
+<script>
+	$("#new").click(function() {
+	  window.location = "/projects/" + <%= @project.id %> + "/tasks/new";
+	});
+	$("#collaborators").click(function() {
+	  window.location = "/projects/" + <%= @project.id %> + "/collaborators";
+	});
+
 	function createUploader(){            
 	    var uploader = new qq.FileUploader({
 	        element: document.getElementById('file-uploader-demo1'),

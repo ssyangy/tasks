@@ -1,4 +1,4 @@
-<%= form_for([@project, @collaborator]) do |f| %>
+<%= form_for([@project, @collaborator], :html => {:class => "form-inline"}) do |f| %>
   <% if @collaborator.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@collaborator.errors.count, "error") %> prohibited this collaborator from being saved:</h2>
@@ -14,7 +14,7 @@
   <div class="field">
     <%= f.label "Email: " %>
     <%= text_field_tag :email %>
-    <%= f.submit 'Add' %>
+    <%= f.submit 'Add', :class => "btn btn-primary" %>
 
   </div>
   <div class="actions">

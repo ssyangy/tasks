@@ -1,19 +1,49 @@
 // Place all the styles related to the Tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*
 html, body{
+background:#efefef;
+background:#ddccc4;
 background:#b8cd88;
-/*background:#efefef;*/
-/*background:#ddccc4;*/
 font-size:12px;
 margin:5px 6px;
-}             
+} 
+*/
+body{
+padding-top:70px;
+} 
+.level-urgent{
+background-color:#DA4F49;
+}
+.level-important{
+background-color:#FAA732;
+}
+.level-normal{
+background-color:#49AFCD;
+}
+.level-idea{
+background-color:#5BB75B;
+}
+.h1-buttons{
+margin-top:4px;
+}
+h1{
+margin-bottom:20px;
+}
+
+
+           
+
+/*
 a, a:visited{
 color:#0f75bc;
 }
 a:hover{
-color:#fff;
+color:#0f75bc;
 }
+*/
+
 .fix{
 clear:both;
 }
@@ -60,9 +90,6 @@ margin-right:10px;
 }
 .topbar .account{
 float:right;
-}
-input[type="submit"]{
-font-size:16px;
 }
 .content h1{
 margin-bottom:30px;

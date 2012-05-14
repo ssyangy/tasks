@@ -1,4 +1,4 @@
-<%= form_for(@project) do |f| %>
+<%= form_for(@project, :html => {:class=>'form-inline'}) do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -11,10 +11,5 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.text_field :name, :size => 50 %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <label>Project Name:</label> <%= f.text_field :name, :size => 50 %> <%= f.submit "Create", :class => 'btn btn-primary' %>
 <% end %>
