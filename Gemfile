@@ -5,6 +5,7 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem "enumerated_attribute", "~> 0.2.16"
 gem 'devise'
 gem 'sqlite3'
 group :production do
