@@ -1,12 +1,14 @@
 class TasksController < ApplicationController
+  layout 'twitter'
   before_filter :authenticate_user!
 
   # GET /tasks
   # GET /tasks.json
   def index
     @project = Project.find(params[:project_id])
-    @tasks = current_user.todos.where('status = 0').order('created_at DESC')
-    @completed = current_user.todos.where('status = 1').order('updated_at DESC')
+    @tasks = @project.tasks
+#    @tasks = current_user.todos.where('status = 0').order('created_at DESC')
+#    @completed = current_user.todos.where('status = 1').order('updated_at DESC')
   #  @tasks = Task.where('status = 0').order("content")
   #  @completed = Task.where('status = 1').order("updated_at DESC")
 

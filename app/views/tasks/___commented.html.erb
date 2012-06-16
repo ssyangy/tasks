@@ -1,0 +1,121 @@
+
+<p class="navbar-text pull-right">
+<% if signed_in? %>
+Hello <%= current_user.email %>! <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
+<% else %>
+<%= link_to 'Sign In', new_user_session_path %>
+<% end %>
+</p>
+
+
+
+<!--
+<h1>Tasks</h1>
+<p id="notice"><%= notice %></p>
+<%= button_to '+ New Task', new_project_task_path(@project), :method => :get %>
+<div class="todo">
+	<div class="task_anchor"></div>
+	<% @tasks.each do |task| %>
+	  <div class='task'>
+		<span class='checkbox'><%= check_box_tag :complete, task.id %></span><span class='content'><%= task.content %></span>
+		<%= image_tag 'delete.png', :class => 'delete' %><%= link_to image_tag('edit.png'), edit_project_task_path(@project, task), :class => 'edit' %>
+	  </div>
+	<% end %>
+</div>          
+
+<div class="legend" id="test">Completed: <span class='completed-count'><%= @completed.size %></span></div>
+<div class="completed">
+	<div class="completed_anchor"></div>                                                     
+	<% @completed.each do |c| %>
+		<div class='task'>
+			<span class='checkbox'><%= check_box_tag :uncomplete, c.id, :checked => 'checked' %></span><span><%= c.content %></span>
+			<%= image_tag 'delete.png', :class => 'delete' %>
+		</div>
+	<% end %>
+</div>
+-->
+<script>
+
+$(function() {  
+
+	$('.delete').click(function(){
+		var id = $(this).prev().prev().children().attr('value');
+		$.ajax({          
+			type: 'DELETE',
+			url: "/tasks/" + id,
+			success: remove_task(this)
+		});
+	});                              
+	function remove_task(e){  
+		$(e).parent().fadeOut('slow', function(){
+			$(e).parent().remove();
+		});
+	}
+	
+	
+	$(':checkbox').click(function(){
+	  	var id = $(this).attr("value");
+		if ($(this).attr("id") == 'complete'){
+			$.ajax({
+				url: "/tasks/" + id + "/complete",
+				success: complete_check(this)
+			});                               
+		}
+		else{
+			$.ajax({
+				url: "/tasks/" + id + "/uncomplete",
+				success: uncomplete_check(this)
+			});                               
+		}
+	}); 
+
+	/*    
+	function complete_check(e){
+		$(e).parent().parent().fadeOut('fast', function(){
+			var rebirth = $(this).clone(true, true);
+			rebirth.find(':checkbox').attr("id", "uncomplete");
+			rebirth.find(':checkbox').attr("name", "uncomplete");
+			$('.completed_anchor').after(rebirth);
+			rebirth.fadeIn('fast');
+			$(this).remove();
+		});
+	}
+
+	function uncomplete_check(e){
+		$(e).parent().parent().fadeOut('fast', function(){
+			var rebirth = $(this).clone(true, true);
+			rebirth.find(':checkbox').attr("id", "complete");
+			rebirth.find(':checkbox').attr("name", "complete");
+			$('.task_anchor').after(rebirth);
+			rebirth.fadeIn('slow');
+			$(this).remove();
+		});
+	}
+	*/
+
+	function complete_check(e){
+	    var rebirth = $(e).parent().parent().clone(true, true);
+		rebirth.find(':checkbox').attr("id", "uncomplete");
+		rebirth.find(':checkbox').attr("name", "uncomplete");
+	    $(e).parent().parent().remove();
+	    $('.completed_anchor').after(rebirth);
+
+		var c_count = $('.completed-count').text();
+		$('.completed-count').text(parseInt(c_count) + 1);
+	}
+
+	function uncomplete_check(e){
+	    var rebirth = $(e).parent().parent().clone(true, true);
+		rebirth.find(':checkbox').attr("id", "complete");
+		rebirth.find(':checkbox').attr("name", "complete");
+	    $(e).parent().parent().remove();
+	    $('.task_anchor').after(rebirth);
+
+		var c_count = $('.completed-count').text();
+		$('.completed-count').text(parseInt(c_count) - 1);
+	}
+	
+});
+
+</script>
+

@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  layout 'twitter'
+  
   # GET /projects
   # GET /projects.json
   def index
