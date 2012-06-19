@@ -27,10 +27,11 @@
 				      <li><%= link_to "+ Create Project", new_project_path %></li>
 				    </ul>
 				  </li>
+					<li class="divider-vertical"></li>
 					<li>
-						<form class="navbar-form pull-left">
-					  	<input type="text" class="span3" placeholder="Create task instantly...">
-						</form>
+						<%= form_tag project_tasks_path(@project), :method => :POST, :class => "navbar-form pull-left" do %>
+							<%= text_field_tag 'content', nil, :class => "span3", :placeholder => "Create task instantly..." %>
+						<% end %>
 					</li>
 					<li>
 						<div class="drop-create span2">Drop files to create...</div>
@@ -38,7 +39,7 @@
 				</ul>
 				<div class="pull-right">
 						<form class="navbar-search">
-					  	<input type="text" class="search-query" placeholder="Search">
+					  	<input type="text" class="search-query span2" placeholder="Search">
 						</form>
 				</div>
 	    </div>
@@ -49,7 +50,13 @@
 	<div id='page-container'>
 		<div>
 			<div class="page-top">
-				<h1><%= @project.name %></h1>
+				<h2><%= @project.name %></h2>
+				<div class="btn-group pull-right">
+				  <button class="btn active">Tasks</button>
+				  <button class="btn">People</button>
+				  <button class="btn">Admin</button>
+				</div>
+				<div class="clearfix"></div>
 			</div>
 			<div class="list">
 				<%= yield %>

@@ -72,7 +72,9 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @project = Project.find(params[:project_id])
-    @task = Task.new(params[:task])
+    Task.parse(params[:content])
+    @task = @project.tasks.build(:content => params[:content])
+#    @task = Task.new(params[:task])
 #    @task.author_id = 
 
     respond_to do |format|
