@@ -29,8 +29,11 @@
 				  </li>
 					<li class="divider-vertical"></li>
 					<li>
+						<% if @project.id.nil? %>
+						<% else %>
 						<%= form_tag project_tasks_path(@project), :method => :POST, :class => "navbar-form pull-left" do %>
 							<%= text_field_tag 'content', nil, :class => "span3", :placeholder => "Create task instantly..." %>
+						<% end %>
 						<% end %>
 					</li>
 					<li>

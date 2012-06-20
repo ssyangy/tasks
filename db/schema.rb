@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120514134144) do
+ActiveRecord::Schema.define(:version => 20120620140031) do
 
   create_table "collaborators", :force => true do |t|
     t.integer  "project_id"
@@ -27,8 +27,16 @@ ActiveRecord::Schema.define(:version => 20120514134144) do
     t.datetime "updated_at", :null => false
   end
 
-# Could not dump table "tasks" because of following StandardError
-#   Unknown type 'enum' for column 'importance'
+  create_table "tasks", :force => true do |t|
+    t.string   "content"
+    t.integer  "status",      :default => 0
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.integer  "author_id",   :default => 1,  :null => false
+    t.integer  "assignee_id", :default => 1,  :null => false
+    t.integer  "project_id"
+    t.string   "due",         :default => ""
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
