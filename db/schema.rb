@@ -30,12 +30,12 @@ ActiveRecord::Schema.define(:version => 20120620140031) do
   create_table "tasks", :force => true do |t|
     t.string   "content"
     t.integer  "status",      :default => 0
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-    t.integer  "author_id",   :default => 1,  :null => false
-    t.integer  "assignee_id", :default => 1,  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "author_id",   :default => 1, :null => false
+    t.integer  "assignee_id", :default => 1, :null => false
     t.integer  "project_id"
-    t.string   "due",         :default => ""
+    t.integer  "due"
   end
 
   create_table "users", :force => true do |t|

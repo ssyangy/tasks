@@ -4,7 +4,7 @@ class Task < ActiveRecord::Base
   belongs_to :author, :class_name => "User", :foreign_key => "author_id"        
   belongs_to :project          
   
-  enum_attr :due, [['ASAP', 10, 'ASAP'], ['today', 20, 'today'], ['tomorrow', 30, 'tomorrow'], ['this week', 40, 'this week'], ['this month', 50, 'this month'], ['next month', 60, 'next month'], ['this year', 70, 'this year']]
+  enum_attr :due, [['ASAP', 10, 'ASAP'], ['Today', 20, 'Today'], ['Tomorrow', 30, 'Tomorrow'], ['ThisWeek', 40, 'ThisWeek'], ['ThisMonth', 50, 'ThisMonth'], ['NextMonth', 60, 'NextMonth'], ['ThisYear', 70, 'ThisYear']]
                    
 #  DueTypes = ['ASAP', 'today', 'tomorrow', 'this week', 'next week', 'this month', 'next month', 'this year']
   # tom. tmr. 2moro.
