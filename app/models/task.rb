@@ -15,7 +15,27 @@ class Task < ActiveRecord::Base
     parsed = input.split(' due ')
     if parsed.size == 2
       task.content = parsed[0]
-      task.due = parsed[1]
+      
+      case parsed[1].strip.downcase
+      when 'asap'
+        task.due = DUE_ASAP
+      when 'today'
+        task.due = DUE_TODAY
+      when 'tomorrow', 'tmr.', 'tom.', '2moro.'
+        task.due = DUE_TOMORROW
+      when 'this week', 'thisweek'
+        task.due = DUE_THISWEEK
+      when 'this month', 'thismonth'
+        task.due = DUE_THISMONTH
+      when 'next week', 'nextweek'
+        task.due = DUE_NEXTWEEK
+      when 'this year', 'thisyear'
+        task.due = DUE_THISYEAR
+      else
+        # unrecognized due...TODO
+      end
+      
+#      task.due = parsed[1]
     elsif parsed.size == 1
       task.content = parsed[0]
     else
