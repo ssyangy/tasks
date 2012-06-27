@@ -4,7 +4,9 @@ class Task < ActiveRecord::Base
   belongs_to :author, :class_name => "User", :foreign_key => "author_id"        
   belongs_to :project          
   
-  enum_attr :due, [['ASAP', 10, 'ASAP'], ['Today', 20, 'Today'], ['Tomorrow', 30, 'Tomorrow'], ['ThisWeek', 40, 'ThisWeek'], ['ThisMonth', 50, 'ThisMonth'], ['NextMonth', 60, 'NextMonth'], ['ThisYear', 70, 'ThisYear']]
+  enum_attr :due, [['OverDue', 0, 'OverDue'], ['ASAP', 10, 'ASAP'], ['Today', 20, 'Today'], 
+   ['Tomorrow', 30, 'Tomorrow'], ['ThisWeek', 40, 'ThisWeek'], ['ThisMonth', 50, 'ThisMonth'],
+   ['NextMonth', 60, 'NextMonth'], ['ThisYear', 70, 'ThisYear'], ['Nil', 999999, 'Nil']]
                    
 #  DueTypes = ['ASAP', 'today', 'tomorrow', 'this week', 'next week', 'this month', 'next month', 'this year']
   # tom. tmr. 2moro.
@@ -25,19 +27,20 @@ class Task < ActiveRecord::Base
         task.due = DUE_TOMORROW
       when 'this week', 'thisweek'
         task.due = DUE_THISWEEK
-      when 'this month', 'thismonth'
-        task.due = DUE_THISMONTH
       when 'next week', 'nextweek'
         task.due = DUE_NEXTWEEK
+      when 'this month', 'thismonth'
+        task.due = DUE_THISMONTH
+      when 'next month', 'nextmonth'
+        task.due = DUE_NEXTMONTH
       when 'this year', 'thisyear'
         task.due = DUE_THISYEAR
       else
-        # unrecognized due...TODO
+        task.due = DUE_NIL
       end
-      
-#      task.due = parsed[1]
     elsif parsed.size == 1
       task.content = parsed[0]
+      task.due = DUE_NIL
     else
       # TODO
     end
