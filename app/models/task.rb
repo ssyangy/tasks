@@ -5,8 +5,8 @@ class Task < ActiveRecord::Base
   belongs_to :project          
   
   enum_attr :due, [['OverDue', 0, 'OverDue'], ['ASAP', 10, 'ASAP'], ['Today', 20, 'Today'], 
-   ['Tomorrow', 30, 'Tomorrow'], ['ThisWeek', 40, 'ThisWeek'], ['ThisMonth', 50, 'ThisMonth'],
-   ['NextMonth', 60, 'NextMonth'], ['ThisYear', 70, 'ThisYear'], ['Nil', 999999, 'Nil']]
+   ['Tomorrow', 30, 'Tomorrow'], ['ThisWeek', 40, 'ThisWeek'], ['NextWeek', 50, 'NextWeek'], 
+   ['ThisMonth', 60, 'ThisMonth'], ['NextMonth', 70, 'NextMonth'], ['ThisYear', 80, 'ThisYear'], ['Nil', 999999, 'Nil']]
                    
 #  DueTypes = ['ASAP', 'today', 'tomorrow', 'this week', 'next week', 'this month', 'next month', 'this year']
   # tom. tmr. 2moro.

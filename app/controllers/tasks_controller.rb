@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  require 'pp'
   layout 'twitter'
   before_filter :authenticate_user!
 
@@ -6,7 +7,62 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @project = Project.find(params[:project_id])
-    @tasks = @project.tasks.order('due')
+    @tasks = @project.tasks.where('status = 0').order('due')
+    
+    @tasks.each do |task|
+      today = Date.today
+      task_date = task.created_at.to_date
+
+      case task.due
+      when Task::DUE_ASAP
+      when Task::DUE_TODAY
+        if task_date < today
+          task.due = Task::DUE_OVERDUE
+        end
+      when Task::DUE_TOMORROW
+        if task_date + 1 == today
+          task.due = Task::DUE_TODAY
+        elsif task_date + 1 < today
+          task.due = Task::DUE_OVERDUE
+        end
+      when Task::DUE_THISWEEK
+        if today - task_date == 7 - task_date.wday - 2
+          task.due = Task::DUE_TOMORROW
+        elsif today - task_date == 7 - task_date.wday - 1
+          task.due = Task::DUE_TODAY
+        elsif today - task_date >= 7 - task_date.wday
+          task.due = Task::DUE_OVERDUE
+        end
+      when Task::DUE_NEXTWEEK
+        # TODO
+      when Task::DUE_THISMONTH
+        days_in_month = Time.days_in_month(Time.now.month)
+        if today.month != task_date.month
+          task.due = Task::DUE_OVERDUE
+        elsif days_in_month - today.mday == 1
+          task.due = Task::DUE_TOMORROW
+        elsif days_in_month - today.mday == 0
+          task.due = Task::DUE_TODAY
+        # TODO. due_thisweek, due_nextweek
+        end
+      when Task::DUE_NEXTMONTH
+        if (task_date >> 1).month != today.month
+          task.due = Task::DUE_OVERDUE
+        # elsif 
+        #   task.due = Task::DUE_TOMORROW
+        # elsif
+        #   task.due = Task::DUE_TODAY
+        # TODO. due_thisweek, due_nextweek
+        elsif today.month == task_date.month
+          task.due = Task::DUE_THISMONTH
+        end 
+      when Task::DUE_THISYEAR
+        # TODO
+      else
+      end
+    end
+    
+    @tasks.sort! { |t| t.due }
 #    @tasks = current_user.todos.where('status = 0').order('created_at DESC')
 #    @completed = current_user.todos.where('status = 1').order('updated_at DESC')
   #  @tasks = Task.where('status = 0').order("content")
