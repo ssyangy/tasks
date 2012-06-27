@@ -7,9 +7,9 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @project = Project.find(params[:project_id])
-    @tasks = @project.tasks.where('status = 0').order('due')
+    @tasks_row = @project.tasks.where('status = 0').order('due')
     
-    @tasks.each do |task|
+    @tasks_row.each do |task|
       today = Date.today
       task_date = task.created_at.to_date
 
@@ -61,8 +61,9 @@ class TasksController < ApplicationController
       else
       end
     end
-    
-    @tasks.sort! { |t| t.due }
+
+    @tasks = @tasks_row.sort_by &:due
+#    @tasks.sort! { |t| t.due }
 #    @tasks = current_user.todos.where('status = 0').order('created_at DESC')
 #    @completed = current_user.todos.where('status = 1').order('updated_at DESC')
   #  @tasks = Task.where('status = 0').order("content")
