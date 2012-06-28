@@ -76,7 +76,8 @@ class TasksController < ApplicationController
   end        
   
   def complete 
-    @task = Task.find(params[:id])
+    pp params[:task_id]
+    pp @task = Task.find(params[:task_id])
     @task.status = 1
     @task.save
     

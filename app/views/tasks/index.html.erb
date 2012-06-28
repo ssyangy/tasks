@@ -1,6 +1,6 @@
 <div class="content-header">
 	<div class="header-inner">
-		<h2>Tasks</h2>
+		<h2>Tasks</h2><%= hidden_field_tag :project_id, @project.id %>
 	</div>
 </div>
 <div class="tasks">
@@ -18,3 +18,23 @@
 	</div>
 </div>
 
+<script>
+
+$(function() {  
+
+	$(':checkbox').click(function(){
+  	var task_id = $(this).attr("value");
+		var project_id = $('#project_id').val();
+		$.ajax({
+			url: "/projects/" + project_id + "/tasks/" + task_id + "/complete",
+			success: complete_check(this)
+		});                               
+	});
+
+	function complete_check(e){
+		$(e).parent().parent().fadeOut('slow');
+	}
+	
+});
+
+</script>
