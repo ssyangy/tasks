@@ -23,6 +23,7 @@
 
 		$('#myModal').on('hidden', function(){
 			$('#instant_input').val('');
+			$('#instant_input').focus();
 		});
 
 	});
@@ -86,12 +87,14 @@
 		<div id='page-container'>
 			<div>
 				<div class="page-top">
+					<% if !@project.id.nil? %>
 					<h2><%= @project.name %></h2>
 					<div class="btn-group pull-right">
 					  <button class="btn <% if action_name == 'index'%>active<%end%>"><%= link_to "Tasks", project_tasks_path(@project) %></button>
 					  <button class="btn"><a data-toggle="modal" href="#myModal" >People</a></button>
 					  <button class="btn <% if action_name == 'show'%>active<%end%>"><%= link_to "Admin", @project %></button>
 					</div>
+					<% end %>
 					<div class="clearfix"></div>
 				</div>
 				<div class="list">

@@ -28,7 +28,8 @@ ActiveRecord::Schema.define(:version => 20120620140031) do
   end
 
   create_table "tasks", :force => true do |t|
-    t.string   "content"
+    t.string   "title"
+    t.text     "detail"
     t.integer  "status",      :default => 0
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20120620140031) do
     t.integer  "assignee_id", :default => 1, :null => false
     t.integer  "project_id"
     t.integer  "due"
+    t.date     "due_date"
   end
 
   create_table "users", :force => true do |t|
