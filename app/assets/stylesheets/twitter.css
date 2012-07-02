@@ -128,8 +128,24 @@ body, label, input, textarea, select, button {
 	min-height: 40px;
 	font-size: 13px;
 	border: 1px dashed #666;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 	text-align:center;	
+}
+
+.panel{
+	border: 1px solid rgba(0, 0, 0, .1);
+	-webkit-border-radius: 6px 6px 6px 6px;
+	-moz-border-radius: 6px 6px 6px 6px;
+	border-radius: 6px 6px 6px 6px;
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+	background:white;
+}
+.panel .panel-inner{
+	-webkit-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;	
 }

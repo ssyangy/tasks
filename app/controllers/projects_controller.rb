@@ -38,6 +38,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
+    render :layout => 'project_admin'
   end
 
   # POST /projects
@@ -83,4 +84,6 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  
 end

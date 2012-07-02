@@ -5,34 +5,10 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-	<script>
-
-	$(function() {  
-
-		$(document).ready(function(){
-			$('#instant_input').focus();
-		});
-
-		$("#instant_input").keypress(function() { // not work for chinese input
-			$('#myModal').modal('show');
-			$('#myModal').on('shown', function(){
-				$('#title').val($('#instant_input').val());
-				$("#title").focus();
-			});
-		});
-
-		$('#myModal').on('hidden', function(){
-			$('#instant_input').val('');
-			$('#instant_input').focus();
-		});
-
-	});
-
-	</script>
 </head>
 
 <body>
-
+	
 	<div class="navbar navbar-fixed-top">
 	  <div class="navbar-inner">
 	    <div class="container">
@@ -97,60 +73,36 @@
 					<% end %>
 					<div class="clearfix"></div>
 				</div>
-				<div class="list">
-					<%= yield %>
-				</div>
-				<div class="updates">
-				</div>
+			</div>
+			<div class="container-fluid">
+			  <div class="row-fluid">
+					<div class="panel span2" style="padding:8px 0;">
+						<div class="panel-inner">
+							<ul class="nav nav-list">
+							  <li class="nav-header">
+							    List header
+							  </li>
+							  <li class="active">
+							    <a href="#">Home</a>
+							  </li>
+							  <li>
+							    <a href="#">Library</a>
+							  </li>
+							  ...
+							</ul>
+						</div>
+			      <!--Sidebar content-->
+			    </div>
+			    <div class="span10">
+						<%= yield %>
+			      <!--Body content-->
+			    </div>
+			  </div>
 			</div>
 		</div>
 	</div>
 
-	<div class="modal fade hide" id="myModal">
-	  <div class="modal-header">
-	    <button type="button" class="close" data-dismiss="modal">×</button>
-	    <h3>Create task</h3>
-	  </div>
-	  <div class="modal-body">
-		<form class="form-horizontal" id="form-new-task">
-		  <fieldset>
-		    <div class="control-group">
-		      <label class="control-label short-label" for="title">Title:</label>
-		      <div class="controls short-content">
-		        <%= text_field_tag :title, nil, :class => 'input-xlarge' %>
-		      </div>
-		    </div>
-		    <div class="control-group">
-		      <label class="control-label short-label" for="detail">Detail:</label>
-		      <div class="controls short-content">
-		        <%= text_area_tag :detail, nil, :class => 'input-xlarge', :rows => 3 %>
-		      </div>
-		    </div>
-		    <div class="control-group">
-		      <label class="control-label short-label" for="detail">Due:</label>
-		      <div class="controls short-content">
-		      </div>
-		    </div>
-		    <div class="control-group">
-		      <label class="control-label short-label" for="detail">Assign:</label>
-		      <div class="controls short-content">
-		      </div>
-		    </div>
-		    <div class="control-group">
-		      <label class="control-label short-label" for="detail">Documents:</label>
-		      <div class="controls short-content">
-				<div class="drag-drop-area input-xlarge">Drag and drop files here...</div>
-				or <input class="input-file" type="file">
-		      </div>
-		    </div>
-		  </fieldset>
-		</form>
-	  </div>
-	  <div class="modal-footer">
-	    <a href="#" class="btn" data-dismiss="modal">Cancel</a>
-	    <a href="#" class="btn btn-primary">Create task</a>
-	  </div>
-	</div>
-
+	
 </body>
+
 </html>
