@@ -7,6 +7,12 @@ font-size: 18px;
 font-weight: bold;
 line-height: 20px;
 }
+hr {
+height: 0;
+padding: 0;
+border: 0;
+border-top: 1px solid #EEE;
+}
 .clearfix{
 	clear:both;
 }
@@ -148,4 +154,60 @@ body, label, input, textarea, select, button {
 	-webkit-border-radius: 0 0 5px 5px;
 	-moz-border-radius: 0 0 5px 5px;
 	border-radius: 0 0 5px 5px;	
+}
+.dashboard{
+	float: left;
+	width: 302px;
+}
+.admin-content{
+	float: right;
+	width: 622px;
+}
+
+.content-inner, .content-narrow, .page-canvas, .permalink {
+-webkit-background-clip: padding-box;
+-moz-background-clip: padding;
+background-clip: padding-box;
+}
+.content-inner {
+padding: 12px 12px 24px 12px;
+background-color: white;
+border-left: 1px solid #EEE;
+border-left: 1px solid rgba(0, 0, 0, .1);
+border-right: 1px solid #EEE;
+border-right: 1px solid rgba(0, 0, 0, .1);
+}
+.content-inner.no-stream-end {
+margin-bottom: 14px;
+border-bottom: 1px solid #EEE;
+border-bottom: 1px solid rgba(0, 0, 0, .1);
+-webkit-border-radius: 0 0 6px 6px;
+-moz-border-radius: 0 0 6px 6px;
+border-radius: 0 0 6px 6px;
+}
+
+.module {
+padding: 8px 0;
+position: relative;
+margin-bottom: 10px;
+line-height: 16px;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+-webkit-background-clip: padding-box;
+-moz-background-clip: padding;
+background-clip: padding-box;
+background-color:whiteSmoke;
+}
+.module {
+text-shadow: 0 1px 0 white;
+border: 1px solid #EEE;
+border: 1px solid rgba(0, 0, 0, .1);
+}
+.form-inline label{
+	width: 100px;
+	text-align: right;
+}
+.form-inline .controls{
+	margin-left: 20px;
 }

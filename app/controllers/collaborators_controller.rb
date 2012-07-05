@@ -7,9 +7,8 @@ class CollaboratorsController < ApplicationController
     @project = Project.find(params[:project_id])
     @collaborators = @project.collaborators
     @collaborator = Collaborator.new
-
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :layout => "admin" }# index.html.erb
       format.json { render json: @collaborators }
     end
   end

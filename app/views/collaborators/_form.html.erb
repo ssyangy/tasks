@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label "Email: " %>
-    <%= text_field_tag :email %>
+    <%= f.label "Email" %>
+    <%= text_field_tag :email, nil, :class => "controls" %>
     <%= f.submit 'Add', :class => "btn btn-primary" %>
 
   </div>

@@ -1,10 +1,7 @@
-<h1><%= @project.name %></h1>
-
-<h3>Add collaborator</h3>
+<% @function = "Collaborators" %>
 <p id="notice"><%= notice %></p>
 <%= render 'form' %>
-<h3>Collaborators</h3>
-
+<hr>
 <table>
   <tr>
 	<td width="250"><%= @project.owner.email %></td>
@@ -17,8 +14,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />                                               
-<br />                                               
-
-<%= link_to '< Back to Project', project_url(@project) %>

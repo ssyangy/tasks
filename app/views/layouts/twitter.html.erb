@@ -86,17 +86,7 @@
 	<div id='page-outer'>
 		<div id='page-container'>
 			<div>
-				<div class="page-top">
-					<% if !@project.id.nil? %>
-					<h2><%= @project.name %></h2>
-					<div class="btn-group pull-right">
-					  <button class="btn <% if action_name == 'index'%>active<%end%>"><%= link_to "Tasks", project_tasks_path(@project) %></button>
-					  <button class="btn"><a data-toggle="modal" href="#myModal" >People</a></button>
-					  <button class="btn <% if action_name == 'show'%>active<%end%>"><%= link_to "Admin", edit_project_path(@project) %></button>
-					</div>
-					<% end %>
-					<div class="clearfix"></div>
-				</div>
+				<%= render 'shared/project_menu' %>
 				<div class="list">
 					<%= yield %>
 				</div>

@@ -61,43 +61,31 @@
 
 	<div id='page-outer'>
 		<div id='page-container'>
-			<div>
-				<div class="page-top">
-					<% if !@project.id.nil? %>
-					<h2><%= @project.name %></h2>
-					<div class="btn-group pull-right">
-					  <button class="btn <% if action_name == 'index'%>active<%end%>"><%= link_to "Tasks", project_tasks_path(@project) %></button>
-					  <button class="btn"><a data-toggle="modal" href="#myModal" >People</a></button>
-					  <button class="btn <% if action_name == 'show'%>active<%end%>"><%= link_to "Admin", edit_project_path(@project) %></button>
-					</div>
-					<% end %>
-					<div class="clearfix"></div>
+			<%= render 'shared/project_menu' %>
+			<div class="dashboard">
+				<div class="module">
+					<ul class="nav nav-list">
+					  <li class="nav-header">
+					    Project Admin
+					  </li>
+					  <li<% if action_name == "edit" %> class="active"<% end %>>
+					    <%= link_to "Basic settings", edit_project_path(@project) %></a>
+					  </li>
+					  <li<% if action_name == "index" %> class="active"<% end %>>
+					    <%= link_to "Collaborators", project_collaborators_path(@project) %>
+					  </li>
+					</ul>
 				</div>
 			</div>
-			<div class="container-fluid">
-			  <div class="row-fluid">
-					<div class="panel span2" style="padding:8px 0;">
-						<div class="panel-inner">
-							<ul class="nav nav-list">
-							  <li class="nav-header">
-							    List header
-							  </li>
-							  <li class="active">
-							    <a href="#">Home</a>
-							  </li>
-							  <li>
-							    <a href="#">Library</a>
-							  </li>
-							  ...
-							</ul>
-						</div>
-			      <!--Sidebar content-->
-			    </div>
-			    <div class="span10">
-						<%= yield %>
-			      <!--Body content-->
-			    </div>
-			  </div>
+			<div class="admin-content">
+				<div class="content-header">
+					<div class="header-inner">
+						<h2><%= @function %></h2>
+					</div>
+				</div>
+				<div class="content-inner no-stream-end">
+					<%= yield %>
+				</div>
 			</div>
 		</div>
 	</div>
