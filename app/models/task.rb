@@ -14,7 +14,7 @@ class Task < ActiveRecord::Base
     
     parsed = input.split(' due ')
     if parsed.size == 2
-      task.content = parsed[0]
+      task.title = parsed[0]
       
       case parsed[1].strip.downcase
       when 'asap'
@@ -37,7 +37,7 @@ class Task < ActiveRecord::Base
         task.due = DUE_NIL
       end
     elsif parsed.size == 1
-      task.content = parsed[0]
+      task.title = parsed[0]
       task.due = DUE_NIL
     else
       # TODO

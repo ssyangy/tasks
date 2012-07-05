@@ -63,6 +63,7 @@ class TasksController < ApplicationController
     end
 
     @tasks = @tasks_row.sort_by &:due
+    @task = Task.new
 #    @tasks.sort! { |t| t.due }
 #    @tasks = current_user.todos.where('status = 0').order('created_at DESC')
 #    @completed = current_user.todos.where('status = 1').order('updated_at DESC')
@@ -130,7 +131,7 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @project = Project.find(params[:project_id])
-    @task = Task.parse(params[:content])
+    @task = Task.parse(params[:title])
     @task.project_id = @project.id
 
     respond_to do |format|
