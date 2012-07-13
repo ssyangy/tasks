@@ -24,7 +24,12 @@ Devise.setup do |config|
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
   # config.authentication_keys = [ :email ]
-
+  # 2012 Jul 11. yy according to: 
+  # https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address
+  config.authentication_keys = [ :login ]
+  config.reset_password_keys = [ :login ]
+  config.confirmation_keys = [ :login ]
+  
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,
