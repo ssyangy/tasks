@@ -131,8 +131,11 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @project = Project.find(params[:project_id])
-    @task = Task.parse(params[:title])
+    @task = Task.parse(params[:task][:title])
     @task.project_id = @project.id
+    @task.detail = params[:task][:detail]
+    @task.author_id = current_user.id
+    @task.assignee_id = params[:task][:assignee_id]
 
     respond_to do |format|
       if @task.save
@@ -173,5 +176,14 @@ class TasksController < ApplicationController
     #  format.html { redirect_to tasks_url }
     #  format.json { head :no_content }
     end
+  end
+  
+  
+  # kind of list
+  def people
+    @project = Project.find(params[:project_id])
+    @collaborators = @project.collaborators
+    
+    render :layout => "people"
   end
 end

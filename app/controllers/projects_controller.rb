@@ -44,10 +44,14 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create   
-    @project = current_user.projects.build(params[:project])
+    Project.transaction do
+      @project = current_user.projects.build(params[:project])
+      @project.save
+      Collaborator.create(:project_id => @project.id, :user_id => current_user.id)
+    end
 
     respond_to do |format|
-      if @project.save
+      if @project
         format.html { redirect_to project_tasks_url(@project), notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else

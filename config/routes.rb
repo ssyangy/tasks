@@ -3,6 +3,9 @@ Tasks::Application.routes.draw do
   resources :projects do
     resources :tasks do
       get 'complete'
+      collection do
+        get 'people'
+      end
     end
     resources :collaborators
   end

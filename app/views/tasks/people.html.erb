@@ -1,0 +1,21 @@
+<div id="masonry-container">
+	<% @collaborators.each do |c| %>
+	<div class="item">
+		<div class="content-header">
+			<div class="header-inner mini-profile">
+				<div class="account-summary">
+					<div class="">
+						<%= image_tag 'default_profile.png', :class => "avatar size32" %>
+						<b class="fullname"><%= c.user.username %></b>
+						<small class="role">Java developer</small>
+					</div>
+				</div>
+			</div>
+			<% tasks = @project.tasks.where("assignee_id = ?", c.user_id) %>
+			<% tasks.each do |t| %>
+			<div class="task"><%= t.title %></div>
+			<% end %>
+		</div>
+	</div>
+	<% end %>
+</div>

@@ -3,13 +3,9 @@
 <%= render 'form' %>
 <hr>
 <table>
-  <tr>
-	<td width="250"><%= @project.owner.email %></td>
-	<td>Owner</td>
-  </tr>
 <% @collaborators.each do |collaborator| %>
   <tr>
-    <td><%= collaborator.user.email %></td>
+    <td width="300"><%= collaborator.user.email %></td>
     <td><%= link_to 'Remove', [@project, collaborator], confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
