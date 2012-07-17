@@ -257,3 +257,8 @@ border-top-right-radius: 5px;
 	border-left: 0px;
 	border-right: 0px;
 }
+.task-content .user{
+	float: right;
+	font-size: 11px;
+	color: #999;
+}

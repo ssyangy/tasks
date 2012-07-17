@@ -11,7 +11,7 @@
 					</div>
 				</div>
 			</div>
-			<% tasks = @project.tasks.where("assignee_id = ?", c.user_id) %>
+			<% tasks = @project.tasks.where("assignee_id = ? AND status = 0", c.user_id) %>
 			<% tasks.each do |t| %>
 			<div class="task"><%= t.title %></div>
 			<% end %>

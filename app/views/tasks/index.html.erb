@@ -7,7 +7,9 @@
 	<% @tasks.each do |task| %>
 	<div class="task">
 		<div class="task-content">
-			<%= check_box_tag :complete, task.id %> <span class="due"><%= task.due_name %></span> <%= task.title %>
+			<%= check_box_tag :complete, task.id %> <% if task.due != Task::DUE_NIL %><span class="due"><%= task.due_name %></span> <% end %>
+			<%= task.title %>
+			<div class="user"><%= task.handler.username %></div>
 		</div>
 	</div>
 	<% end %>

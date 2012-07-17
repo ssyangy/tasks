@@ -1,7 +1,8 @@
 class Task < ActiveRecord::Base
   require 'pp'
   
-  belongs_to :author, :class_name => "User", :foreign_key => "author_id"        
+  belongs_to :author, :class_name => "User", :foreign_key => "author_id"
+  belongs_to :handler, :class_name => "User", :foreign_key => "assignee_id"        
   belongs_to :project          
   
   enum_attr :due, [['OverDue', 0, 'OverDue'], ['ASAP', 10, 'ASAP'], ['Today', 20, 'Today'], 
