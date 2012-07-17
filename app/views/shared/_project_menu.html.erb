@@ -2,9 +2,9 @@
 	<% if !@project.id.nil? %>
 	<h2><%= @project.name %></h2>
 	<div class="btn-group pull-right">
-	  <button class="btn <% if controller_name == 'tasks' && action_name == 'index'%>active<%end%>"><%= link_to "Tasks", project_tasks_path(@project) %></button>
-	  <button class="btn <% if controller_name == 'tasks' && action_name == 'people'%>active<%end%>"><%= link_to "People", people_project_tasks_path(@project) %></button>
-	  <button class="btn <% if (controller_name == 'collaborators' && action_name == 'index') || (controller_name == 'projects' && action_name == 'edit')%>active<%end%>"><%= link_to "Admin", edit_project_path(@project) %></button>
+	  <button class="btn <% if controller_name == 'tasks' && action_name == 'index'%>active<%end%>" onClick="location.href=('/projects/<%= @project.id %>/tasks')">Tasks</button>
+	  <button class="btn <% if controller_name == 'tasks' && action_name == 'people'%>active<%end%>" onClick="location.href=('/projects/<%= @project.id %>/tasks/people')">People</button>
+	  <button class="btn <% if (controller_name == 'collaborators' && action_name == 'index') || (controller_name == 'projects' && action_name == 'edit')%>active<%end%>" onClick="location.href=('/projects/<%= @project.id %>/edit')">Admin</button>
 	</div>
 	<% end %>
 	<div class="clearfix"></div>

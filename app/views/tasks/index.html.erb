@@ -5,7 +5,7 @@
 </div>
 <div class="tasks">
 	<% @tasks.each do |task| %>
-	<div class="task">
+	<div class="task" id="<%= task.id %>">
 		<div class="task-content">
 			<%= check_box_tag :complete, task.id %> <% if task.due != Task::DUE_NIL %><span class="due"><%= task.due_name %></span> <% end %>
 			<%= task.title %>
@@ -20,10 +20,21 @@
 	</div>
 </div>
 
-<script>
+<div id="task-detail-wrapper" style="display:none;">
+	<div class="task-detail">
+		<% @task = Task.new %>
+		<%= render 'form' %>
+	</div>
+</div>
 
+<script>
 $(function() {  
 
+	$('.task').click(function(){
+		$("#task-detail-wrapper").slideDown("slow");
+//		$(this).after();
+	});
+	
 	$(':checkbox').click(function(){
   	var task_id = $(this).attr("value");
 		var project_id = $('#project_id').val();
@@ -38,5 +49,4 @@ $(function() {
 	}
 	
 });
-
 </script>
