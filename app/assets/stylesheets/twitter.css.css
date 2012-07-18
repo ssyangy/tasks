@@ -1,7 +1,9 @@
 .mt5{
 	margin-top:5px;
 }
-
+.mr5{
+	margin-right: 5px;
+}
 h2 {
 font-size: 18px;
 font-weight: bold;
@@ -263,5 +265,29 @@ border-top-right-radius: 5px;
 	color: #999;
 }
 .task-detail{
-	background: #fff;
+	padding: 20px;
+	background: #F9F9F9;
+	border-left: 1px solid #EEE;
+	border-left: 1px solid rgba(0, 0, 0, .1);
+	border-right: 1px solid #EEE;
+	border-right: 1px solid rgba(0, 0, 0, .1);
+}
+.task-detail .literal{
+	width: 300px;
+	float: left;
+	border-right: 1px solid #ccc;
+}
+.task-detail .attachments{
+	float: right;
+}
+.task-form .due{
+	cursor: pointer;
+	margin-right: 5px;
+	padding: 5px 6px;
+	color: #CA6445;
+	background: #FAE9DA;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-o-border-radius: 2px;
+	border-radius: 2px;
 }
