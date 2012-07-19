@@ -18,7 +18,12 @@ border-top: 1px solid #EEE;
 .clearfix{
 	clear:both;
 }
-
+.fr{
+	float: right;
+}
+.fl{
+	float: left;
+}
 
 html, body, #page-outer{
 	height:100%;
@@ -280,14 +285,31 @@ border-top-right-radius: 5px;
 .task-detail .attachments{
 	float: right;
 }
-.task-form .due{
+
+.task-form .select-block{
 	cursor: pointer;
 	margin-right: 5px;
-	padding: 5px 6px;
-	color: #CA6445;
-	background: #FAE9DA;
+	padding: 4px 5px;
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	-o-border-radius: 2px;
 	border-radius: 2px;
+	font-size: 12px;
+}
+.task-form .due{
+	color: #fff;
+	background: #993366;
+}
+.task-form .assignee{
+	color: #fff;
+	background: #663399;
+}
+.file-parking{
+	border: 1px dashed #666;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	font-size: 12px;
+	padding: 3px 5px;
 }

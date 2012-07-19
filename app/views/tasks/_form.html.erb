@@ -1,4 +1,4 @@
-<%= form_for([@project, @task], :html => {:class => "form-horizontal"}) do |f| %>
+<%= form_for([@project, @task], :html => {:class => "form-horizontal", :style=>"margin-bottom:0px;"}) do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -11,16 +11,24 @@
     </div>
   <% end %>
 
-	<div class="modal-body task-form">
-		<div class="control-group"><%= f.text_field :title, :class => 'input-xlarge' %></div>
-		<div class="control-group"><%= f.text_area :detail, :class => 'input-xlarge', :rows => 4 %></div>
-		<div class="control-group">
-			<span class="due">ASAP</span><span class="due">Today</span><span class="due">Next</span><span class="due">ThisYear</span>
+	<div class="modal-body task-form clearfix">
+		<div class="fl">
+			<div class="control-group"><i class="icon-pencil"></i>
+			<%= f.text_field :title, :class => 'input-xlarge', :placeholder => "a short summary..." %></div>
+			<div class="control-group"><i class="icon-list"></i>
+			<%= f.text_area :detail, :class => 'input-xlarge', :rows => 8, :placeholder => "details..." %></div>
+			<div class="control-group"><i class="icon-time"></i>
+				<span class="select-block due">ASAP</span><span class="select-block due">Today</span><span class="select-block due">Tomorrow</span><span class="select-block due">ThisWeek</span>
+			</div>
+			<div class="control-group"><i class="icon-user"></i>
+				<% @project.collaborators.each do |c| %><span class="select-block assignee"><%= c.user.username %></span><% end %>
+			</div>
 		</div>
-		<div class="control-group">
-			<% @project.collaborators.each do |c| %>
-			<span class="assignee"><%= c.user.username %></span>
-			<% end %>
+		<div class="fr" style="width:210px;">
+			<div class="control-group"><i class="icon-upload"></i>
+				<div class="file-parking">Drag and drop files here...</div>
+				<input class="input-file" type="file">
+			</div>
 		</div>
 	</div>
 	<div class="modal-footer">
