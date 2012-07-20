@@ -290,19 +290,22 @@ border-top-right-radius: 5px;
 	cursor: pointer;
 	margin-right: 5px;
 	padding: 4px 5px;
-	-moz-border-radius: 2px;
-	-webkit-border-radius: 2px;
-	-o-border-radius: 2px;
-	border-radius: 2px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
 	font-size: 12px;
 }
-.task-form .due{
+.task-form .due, .task-form .assignee{
 	color: #fff;
 	background: #993366;
 }
-.task-form .assignee{
+.task-form .active{
 	color: #fff;
-	background: #663399;
+	background: #5788d3;
+}
+.task-form .input-file{
+	width: 210px;
 }
 .file-parking{
 	border: 1px dashed #666;

@@ -136,6 +136,7 @@ class TasksController < ApplicationController
     @task.detail = params[:task][:detail]
     @task.author_id = current_user.id
     @task.assignee_id = params[:task][:assignee_id]
+    pp @task
 
     respond_to do |format|
       if @task.save

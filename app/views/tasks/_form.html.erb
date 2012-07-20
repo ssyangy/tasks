@@ -17,11 +17,11 @@
 			<%= f.text_field :title, :class => 'input-xlarge', :placeholder => "a short summary..." %></div>
 			<div class="control-group"><i class="icon-list"></i>
 			<%= f.text_area :detail, :class => 'input-xlarge', :rows => 8, :placeholder => "details..." %></div>
-			<div class="control-group"><i class="icon-time"></i>
+			<div class="control-group" id="due"><i class="icon-time"></i>
 				<span class="select-block due">ASAP</span><span class="select-block due">Today</span><span class="select-block due">Tomorrow</span><span class="select-block due">ThisWeek</span>
 			</div>
-			<div class="control-group"><i class="icon-user"></i>
-				<% @project.collaborators.each do |c| %><span class="select-block assignee"><%= c.user.username %></span><% end %>
+			<div class="control-group" id="assignee"><i class="icon-user"></i>
+				<% @project.collaborators.each do |c| %><span class="select-block assignee"><%= c.user.username %></span><span class="hidden"><%= c.user_id%></span><% end %>
 			</div>
 		</div>
 		<div class="fr" style="width:210px;">
@@ -31,9 +31,27 @@
 			</div>
 		</div>
 	</div>
+	<%= f.hidden_field :assignee_id %>
 	<div class="modal-footer">
 	  <a href="#" class="btn" data-dismiss="modal">Cancel</a>
 	  <%= f.submit :class => 'btn btn-primary' %>
 	</div>
-
 <% end %>
+<script> 
+$(function(){
+	$(".select-block").click(function(){
+		$(this).siblings().removeClass('active');
+		$(this).addClass('active');
+		var select_id = $(this).parent().attr('id');
+		if( select_id == 'due'){
+			// TODO..
+		}
+		else if(select_id == 'assignee'){
+			$('#task_assignee_id').val($(this).next().text());
+		}
+		else{
+			alert("what's " + select_id);
+		}
+	});
+}); 
+</script>
