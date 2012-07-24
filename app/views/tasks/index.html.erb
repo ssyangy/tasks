@@ -39,11 +39,17 @@
 <script>
 $(function() {  
 
-	$('.task').click(function(){
-		$(this).after($("#task-detail-wrapper"));
-		$("#task-detail-wrapper").slideDown("slow");
-//		$(this).after();
+	$('.task').click(function(){          
+		var project_id = $('#project_id').val();
+		var task_id = $(this).attr("id");
+		window.location.href = "/projects/" + project_id + "/tasks/" + task_id;
 	});
+
+// 	$('.task').click(function(){
+// 		$(this).after($("#task-detail-wrapper"));
+// 		$("#task-detail-wrapper").slideDown("slow");
+// //		$(this).after();
+// 	});
 	
 	$(':checkbox').click(function(){
   	var task_id = $(this).attr("value");

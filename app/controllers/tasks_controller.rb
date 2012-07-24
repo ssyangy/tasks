@@ -100,10 +100,11 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout => "people" } # show.html.erb
       format.json { render json: @task }
     end
   end
