@@ -17,11 +17,11 @@
 		  <% end %>
 
 			<div class="modal-body task-form clearfix">
-				<div class="fl">
+				<div class="fl literal mr20">
 					<div class="control-group"><i class="icon-pencil"></i>
-					<%= f.text_field :title, :class => 'input-xlarge', :placeholder => "The whole story or a short summary..." %></div>
+					<%= f.text_field :title, :class => 'input-xxlarge', :placeholder => "The whole story or a short summary..." %></div>
 					<div class="control-group"><i class="icon-list"></i>
-					<%= f.text_area :detail, :class => 'input-xlarge', :rows => 8, :placeholder => "Details if necessary..." %></div>
+					<%= f.text_area :detail, :class => 'input-xxlarge', :rows => 8, :placeholder => "Details if necessary..." %></div>
 					<div class="control-group" id="due"><i class="icon-time"></i>
 						<span class="select-block due">ASAP</span><span class="select-block due">Today</span><span class="select-block due">Tomorrow</span><span class="select-block due">ThisWeek</span>
 					</div>
@@ -29,10 +29,15 @@
 						<% @project.collaborators.each do |c| %><span class="select-block assignee"><%= c.user.username %></span><span class="hidden"><%= c.user_id%></span><% end %>
 					</div>
 				</div>
-				<div class="fr" style="width:210px;">
+				<div class="fl attachments mr20">
 					<div class="control-group"><i class="icon-upload"></i>
 						<div class="file-parking">Drag and drop files here...</div>
 						<input class="input-file" type="file" multiple>
+					</div>
+				</div>
+				<div class="fl comments">
+					<div class="control-group">
+						Not any comment
 					</div>
 				</div>
 			</div>

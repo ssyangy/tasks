@@ -4,6 +4,9 @@
 .mr5{
 	margin-right: 5px;
 }
+.mr20{
+	margin-right: 20px;
+}
 h2 {
 font-size: 18px;
 font-weight: bold;
@@ -277,15 +280,19 @@ border-top-right-radius: 5px;
 	border-right: 1px solid #EEE;
 	border-right: 1px solid rgba(0, 0, 0, .1);
 }
-.task-detail .literal{
-	width: 300px;
+.task-form .literal{
 	float: left;
-	border-right: 1px solid #ccc;
+	border-right: 1px solid #E8E8E8;
+	padding-right:20px;
 }
-.task-detail .attachments{
-	float: right;
+.task-form .attachments{
+	float: left;
+	border-right: 1px solid #E8E8E8;
+	padding-right:20px;
 }
-
+.task-form .comments{
+	font-size: 12px;
+}
 .task-form .select-block{
 	cursor: pointer;
 	margin-right: 5px;
@@ -318,4 +325,7 @@ border-top-right-radius: 5px;
 }
 .content-header .content{
 	background: #fff;
+}
+.input-xxlarge{
+	width: 300px;
 }
