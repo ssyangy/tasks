@@ -280,20 +280,21 @@ border-top-right-radius: 5px;
 	border-right: 1px solid #EEE;
 	border-right: 1px solid rgba(0, 0, 0, .1);
 }
-.task-form .literal{
+.task-edit-form .literal{
 	float: left;
 	border-right: 1px solid #E8E8E8;
 	padding-right:20px;
 }
-.task-form .attachments{
+.task-edit-form .attachments{
 	float: left;
 	border-right: 1px solid #E8E8E8;
 	padding-right:20px;
+	width: 240px;
 }
-.task-form .comments{
+.task-edit-form .comments{
 	font-size: 12px;
 }
-.task-form .select-block{
+.task-edit-form .select-block, .task-form .select-block{
 	cursor: pointer;
 	margin-right: 5px;
 	padding: 4px 5px;
@@ -303,16 +304,13 @@ border-top-right-radius: 5px;
 	border-radius: 3px;
 	font-size: 12px;
 }
-.task-form .due, .task-form .assignee{
+.task-edit-form .due, .task-edit-form .assignee, .task-form .due, .task-form .assignee{
 	color: #fff;
 	background: #993366;
 }
-.task-form .active{
+.task-edit-form .active, .task-form .active{
 	color: #fff;
 	background: #5788d3;
-}
-.task-form .input-file{
-	width: 210px;
 }
 .file-parking{
 	border: 1px dashed #666;

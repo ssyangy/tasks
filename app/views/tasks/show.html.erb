@@ -16,7 +16,7 @@
 		    </div>
 		  <% end %>
 
-			<div class="modal-body task-form clearfix">
+			<div class="modal-body task-edit-form clearfix">
 				<div class="fl literal mr20">
 					<div class="control-group"><i class="icon-pencil"></i>
 					<%= f.text_field :title, :class => 'input-xxlarge', :placeholder => "The whole story or a short summary..." %></div>
@@ -26,7 +26,7 @@
 						<span class="select-block due">ASAP</span><span class="select-block due">Today</span><span class="select-block due">Tomorrow</span><span class="select-block due">ThisWeek</span>
 					</div>
 					<div class="control-group" id="assignee"><i class="icon-user"></i>
-						<% @project.collaborators.each do |c| %><span class="select-block assignee"><%= c.user.username %></span><span class="hidden"><%= c.user_id%></span><% end %>
+						<% @project.collaborators.each do |c| %><span class="select-block assignee<%if @task.assignee_id == c.user.id%> active<%end%>"><%= c.user.username %></span><span class="hidden"><%= c.user_id%></span><% end %>
 					</div>
 				</div>
 				<div class="fl attachments mr20">
@@ -49,3 +49,21 @@
 		<% end %>
 	</div>
 </div>
+<script> 
+$(function(){
+	$(".select-block").click(function(){
+		$(this).siblings().removeClass('active');
+		$(this).addClass('active');
+		var select_id = $(this).parent().attr('id');
+		if( select_id == 'due'){
+			// TODO..
+		}
+		else if(select_id == 'assignee'){
+			$('#task_assignee_id').val($(this).next().text());
+		}
+		else{
+			alert("what's " + select_id);
+		}
+	});
+}); 
+</script>
