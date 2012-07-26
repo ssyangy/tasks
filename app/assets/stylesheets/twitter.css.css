@@ -310,7 +310,7 @@ border-top-right-radius: 5px;
 }
 .task-edit-form .active, .task-form .active{
 	color: #fff;
-	background: #5788d3;
+	background: green;
 }
 .file-parking{
 	border: 1px dashed #666;
