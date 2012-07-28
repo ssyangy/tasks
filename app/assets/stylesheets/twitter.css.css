@@ -294,6 +294,9 @@ border-top-right-radius: 5px;
 .task-edit-form .comments{
 	font-size: 12px;
 }
+.task-form{
+	padding-left:70px;
+}
 .task-edit-form .select-block, .task-form .select-block{
 	cursor: pointer;
 	margin-right: 5px;
@@ -310,7 +313,7 @@ border-top-right-radius: 5px;
 }
 .task-edit-form .active, .task-form .active{
 	color: #fff;
-	background: green;
+	background: #517fd8;
 }
 .file-parking{
 	border: 1px dashed #666;
@@ -326,4 +329,7 @@ border-top-right-radius: 5px;
 }
 .input-xxlarge{
 	width: 300px;
+}
+.input-xxxlarge{
+	width: 360px;
 }

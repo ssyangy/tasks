@@ -133,12 +133,13 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @project = Project.find(params[:project_id])
-    @task = Task.parse(params[:task][:title])
+    @task = Task.new
+    @task.title = params[:task][:title]
+#    @task = Task.parse(params[:task][:title])
     @task.project_id = @project.id
     @task.detail = params[:task][:detail]
     @task.author_id = current_user.id
     @task.assignee_id = params[:task][:assignee_id]
-    pp @task
 
     respond_to do |format|
       if @task.save

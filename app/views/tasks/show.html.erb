@@ -20,7 +20,7 @@
 				<div class="fl literal mr20">
 					<div class="control-group"><i class="icon-pencil"></i>
 					<%= f.text_field :title, :class => 'input-xxlarge', :placeholder => "The whole story or a short summary..." %></div>
-					<div class="control-group"><i class="icon-list"></i>
+					<div class="control-group"><i class="icon-tasks"></i>
 					<%= f.text_area :detail, :class => 'input-xxlarge', :rows => 8, :placeholder => "Details if necessary..." %></div>
 <!--					<div class="control-group" id="due"><i class="icon-time"></i>
 						<span class="select-block due">ASAP</span><span class="select-block due">Today</span><span class="select-block due">Tomorrow</span><span class="select-block due">ThisWeek</span>
@@ -31,7 +31,7 @@
 					<%= f.submit "Save", :class => 'btn btn-primary mr5' %><%= link_to "Cancel", project_tasks_path(@project), :class => 'btn' %>
 				</div>
 				<div class="fl attachments mr20">
-					<div class="control-group"><i class="icon-upload"></i>
+					<div class="control-group"><i class="icon-file"></i>
 						<div class="file-parking">Drag and drop files here...</div>
 						<input class="input-file" type="file" multiple>
 					</div>

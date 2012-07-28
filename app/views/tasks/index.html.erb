@@ -8,7 +8,7 @@
 	<div class="task" id="<%= task.id %>">
 		<div class="task-content">
 			<%= check_box_tag :complete, task.id %> <% if task.due != Task::DUE_NIL %><span class="due"><%= task.due_name %></span> <% end %>
-			<%= task.title %>
+			<span class="title"><%= task.title %></span>
 			<div class="user"><%= task.handler.username %></div>
 		</div>
 	</div>
@@ -39,9 +39,9 @@
 <script>
 $(function() {  
 
-	$('.task').click(function(){          
+	$('.title').click(function(){          
 		var project_id = $('#project_id').val();
-		var task_id = $(this).attr("id");
+		var task_id = $(this).parent().parent().attr("id");
 		window.location.href = "/projects/" + project_id + "/tasks/" + task_id;
 	});
 
