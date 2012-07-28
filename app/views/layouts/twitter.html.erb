@@ -94,7 +94,7 @@
 
 	<div id='page-outer'>
 		<div id='page-container'>
-			<div>
+			<div class="clearfix">
 				<%= render 'shared/project_menu' %>
 				<div class="list">
 					<%= yield %>
@@ -111,7 +111,7 @@
 	    <button type="button" class="close" data-dismiss="modal">×</button>
 	    <h3>Create task</h3>
 	  </div>
-		<%= render "tasks/form" %>
+		<div id="task-form"><%= render "tasks/form" %></div>
 	</div>
 	<% end %>
 </body>

@@ -53,7 +53,7 @@ body, label, input, textarea, select, button {
 	width:940px;
 	min-height:100%;
 	margin:0 auto;
-	padding:54px 15px 0 15px;
+	padding:54px 15px 15px 15px;
 	background:url(wash-white-30.png);
 }
 
@@ -295,7 +295,7 @@ border-top-right-radius: 5px;
 	font-size: 12px;
 }
 .task-form{
-	padding-left:70px;
+	padding-left:80px;
 }
 .task-edit-form .select-block, .task-form .select-block{
 	cursor: pointer;
@@ -316,13 +316,15 @@ border-top-right-radius: 5px;
 	background: #517fd8;
 }
 .file-parking{
-	border: 1px dashed #666;
+	border: 2px dashed #666;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	-o-border-radius: 4px;
 	border-radius: 4px;
 	font-size: 12px;
-	padding: 3px 5px;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 14px;
 }
 .content-header .content{
 	background: #fff;
@@ -332,4 +334,9 @@ border-top-right-radius: 5px;
 }
 .input-xxxlarge{
 	width: 360px;
+}
+.content-header .notice{
+	float: right;
+	font-size:14px;
+	color: green;
 }

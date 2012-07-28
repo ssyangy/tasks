@@ -1,4 +1,4 @@
-<%= form_for([@project, @task], :html => {:class => "form-horizontal", :style=>"margin-bottom:0px;"}) do |f| %>
+<%= form_for([@project, @task], :html => {:class => "form-horizontal", :style=>"margin-bottom:0px;"}, :remote => true) do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -24,10 +24,11 @@
 			</div>
 	</div>
 	<%= f.hidden_field :assignee_id %>
+	<%= hidden_field_tag :has_attachment, 0 %>
 	<div class="modal-footer">
 	  <a href="#" class="btn" data-dismiss="modal">Cancel</a>
 	  <%= f.submit 'Done', :class => 'btn btn-primary' %>
-	  <%= f.submit 'Continue attach files >>', :class => 'btn btn-primary' %>
+	  <a href="#" class="btn btn-primary continue">Continue, attach files >></a>
 	</div>
 <% end %>
 <script> 
@@ -46,5 +47,10 @@ $(function(){
 			alert("what's " + select_id);
 		}
 	});
+	
+	$(".continue").click(function(){
+		$("#has_attachment").val(1);
+		$(".form-horizontal").submit();
+	});		
 }); 
 </script>

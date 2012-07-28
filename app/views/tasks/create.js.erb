@@ -1,0 +1,6 @@
+<% if params[:has_attachment] == '1' %>
+	$("#task-form").html('<%= escape_javascript(render "attach") %>');
+<% else %>
+	<% flash[:notice] = 'Task was successfully created.' %>
+	window.location.href = "/projects/" + <%= @project.id %> + "/tasks/";
+<% end %>

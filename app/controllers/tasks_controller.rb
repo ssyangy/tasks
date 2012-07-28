@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @project = Project.find(params[:project_id])
-    @tasks = @project.tasks.where('status = 0').order('created_at')
+    @tasks = @project.tasks.where('status = 0').order('created_at DESC')
     
     # @tasks_row = @project.tasks.where('status = 0').order('due')
     # @tasks_row.each do |task|
@@ -140,9 +140,10 @@ class TasksController < ApplicationController
     @task.detail = params[:task][:detail]
     @task.author_id = current_user.id
     @task.assignee_id = params[:task][:assignee_id]
-
+    pp params[:has_attachment]
     respond_to do |format|
       if @task.save
+        format.js
         format.html { redirect_to project_tasks_url(@project), notice: 'Task was successfully created.' }
         format.json { render json: @task, status: :created, location: @task }
       else
