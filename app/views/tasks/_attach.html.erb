@@ -1,4 +1,4 @@
-<%= form_for([@project, @task], :html => {:class => "form-horizontal", :style=>"margin-bottom:0px;"}) do |f| %>
+<%= form_for([@project, @task], :html => {:id => "task_attachment", :class => "form-horizontal", :style=>"margin-bottom:0px;"}) do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -16,6 +16,7 @@
 		<em>Upload attachments:</em></div>
 		<div class="control-group">
 			<div class="file-parking input-xxxlarge">Drag and drop files here ...</div>
+			-- or --<br />
 			<input class="input-file" type="file" multiple>
 		</div>
 	</div>
@@ -23,3 +24,18 @@
 	  <a href="#" class="btn btn-primary" data-dismiss="modal">Done</a>
 	</div>
 <% end %>
+
+<script>
+
+$(function() {
+	$('#task_attachment').fileupload({
+	    dataType: 'json',
+	    done: function (e, data) {
+	        $.each(data.result, function (index, file) {
+	            $('<p/>').text(file.name).appendTo(document.body);
+	        });
+	    }
+	});
+});
+
+</script>
