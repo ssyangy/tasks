@@ -158,7 +158,12 @@ class TasksController < ApplicationController
   def update
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
-
+    
+    if request.format == 'application/json'
+      # handle files upload
+      
+    end
+    
     respond_to do |format|
       if @task.update_attributes(params[:task])
         format.html { redirect_to project_tasks_url(@project), notice: 'Task was successfully updated.' }
@@ -173,13 +178,13 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
+    @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
     @task.destroy
 
     respond_to do |format|
-      format.js
-    #  format.html { redirect_to tasks_url }
-    #  format.json { head :no_content }
+      format.html { redirect_to project_tasks_url(@project), notice: 'Task was successfully deleted.' }
+      format.json { head :no_content }
     end
   end
   

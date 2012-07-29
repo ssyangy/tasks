@@ -1,9 +1,9 @@
 <div class="content-header">
 	<div class="header-inner">
-		<h2>Task detail</h2>
+		<%= link_to 'Delete', [@project, @task], :method => 'delete', :confirm => "Are you sure?", :class => 'fr' %><h2>Task detail</h2>
 	</div>
 	<div class="content">
-		<%= form_for([@project, @task], :html => {:class => "form-horizontal", :style=>"margin-bottom:0px;"}) do |f| %>
+		<%= form_for([@project, @task], :html => {:id => "task-edit-form", :class => "form-horizontal", :style=>"margin-bottom:0px;"}) do |f| %>
 		  <% if @task.errors.any? %>
 		    <div id="error_explanation">
 		      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -49,6 +49,15 @@
 </div>
 <script> 
 $(function(){
+	$('#task-edit-form').fileupload({
+	    dataType: 'json',
+	    done: function (e, data) {
+	        $.each(data.result, function (index, file) {
+	            $('<p/>').text(file.name).appendTo(document.body);
+	        });
+	    }
+	});
+
 	$(".select-block").click(function(){
 		$(this).siblings().removeClass('active');
 		$(this).addClass('active');
