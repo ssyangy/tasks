@@ -158,19 +158,25 @@ class TasksController < ApplicationController
   def update
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
-    
-    if request.format == 'application/json'
-      # handle files upload
-      
-    end
-    
-    respond_to do |format|
-      if @task.update_attributes(params[:task])
-        format.html { redirect_to project_tasks_url(@project), notice: 'Task was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+
+    if request.format == 'application/json' # handle files upload
+      @attach = Attachment.create(:task_id => @task.id, :file => params[:files][0])
+
+      respond_to do |format|
+        format.json {
+          pp @attach.to_jq_upload.to_json
+          render :json => @attach.to_jq_upload.to_json
+        }
+      end
+    else # basic attributes update
+        respond_to do |format|
+        if @task.update_attributes(params[:task])
+          format.html { redirect_to project_tasks_url(@project), notice: 'Task was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @task.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

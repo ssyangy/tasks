@@ -5,6 +5,7 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem "uuid"
 gem "enum_attr", "~> 0.0.7"
 #gem "enumerated_attribute", "~> 0.2.16"
 gem 'devise'

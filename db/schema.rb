@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120711122456) do
+ActiveRecord::Schema.define(:version => 20120729150102) do
+
+  create_table "attachments", :force => true do |t|
+    t.integer  "task_id",      :null => false
+    t.string   "file_name",    :null => false
+    t.string   "file_path",    :null => false
+    t.string   "url_path",     :null => false
+    t.string   "content_type"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "collaborators", :force => true do |t|
     t.integer  "project_id"

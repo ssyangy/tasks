@@ -3,3 +3,6 @@ log/*
 tmp
 .DS_Store
 db/schema.rb
+public/attachments/
+tasks.sublime-project
+tasks.sublime-workspace

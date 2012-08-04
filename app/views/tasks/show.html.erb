@@ -31,10 +31,9 @@
 					<%= f.submit "Save", :class => 'btn btn-primary mr5' %><%= link_to "Cancel", project_tasks_path(@project), :class => 'btn' %>
 				</div>
 				<div class="fl attachments mr20">
-					<div class="control-group"><i class="icon-file"></i>
-						<div class="file-parking">Drag and drop files here ...</div>
-						-- or --<br />
-						<input class="input-file" type="file" multiple>
+					<div class="control-group" id="attachments-zone"><i class="icon-file"></i>
+						<em>Just drag and drop files ...or </em>
+						<p><input class="input-file" type="file" multiple></p>
 					</div>
 				</div>
 				<div class="fl comments">
@@ -48,14 +47,13 @@
 		<% end %>
 	</div>
 </div>
+
 <script> 
 $(function(){
 	$('#task-edit-form').fileupload({
 	    dataType: 'json',
 	    done: function (e, data) {
-	        $.each(data.result, function (index, file) {
-	            $('<p/>').text(file.name).appendTo(document.body);
-	        });
+    		$('<p/>').html(('<a href="' + data.result.url + '" target="_blank">' + data.result.name + '</a>')).appendTo($("#attachments-zone"));
 	    }
 	});
 
