@@ -58,11 +58,11 @@ $(function(){
 	$('#task-edit-form').fileupload({
 	    dataType: 'json',
 	    done: function (e, data) {
-    		$('<p/>').html(('<a href="' + data.result.url + '" target="_blank">' + data.result.name + '</a>')).appendTo($("#attachments-zone"));
+    		$('<p/>').html(('<a href="' + data.result.url + '" target="_blank">' + data.result.name + '</a>' + '&nbsp;' + '<i class="icon-remove" id="' + data.result.id + '"></i>')).appendTo($("#attachments-zone"));
 	    }
 	});
 
-	$(".icon-remove").click(function(){
+	$(".icon-remove").live("click", function(){
 		if (confirm("Sure to destroy?") == false){
 			return;
 		}

@@ -10,7 +10,8 @@ class Attachment < ActiveRecord::Base
   def to_jq_upload
     {
       "name" => self.file_name,
-      "url" => self.url_path
+      "url" => self.url_path,
+      "id" => self.id
     }
   end 
 
