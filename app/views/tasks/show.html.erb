@@ -16,7 +16,7 @@
 		    </div>
 		  <% end %>
 
-			<div class="modal-body task-edit-form clearfix">
+			<div class="task-edit-form clearfix">
 				<div class="fl literal mr20">
 					<div class="control-group"><i class="icon-pencil"></i>
 					<%= f.text_field :title, :class => 'input-xxlarge', :placeholder => "The whole story or a short summary..." %></div>
@@ -34,6 +34,11 @@
 					<div class="control-group" id="attachments-zone"><i class="icon-file"></i>
 						<em>Just drag and drop files ...or </em>
 						<p><input class="input-file" type="file" multiple></p>
+						<% attachments = @task.attachments %>
+						<% attachments.each do |file| %>
+							<p><%= link_to file.file_name, file.url_path, :target => "_blank" %>
+								<i class="icon-remove" id="<%= file.id %>"></i></p>
+						<% end %>
 					</div>
 				</div>
 				<div class="fl comments">
@@ -55,6 +60,24 @@ $(function(){
 	    done: function (e, data) {
     		$('<p/>').html(('<a href="' + data.result.url + '" target="_blank">' + data.result.name + '</a>')).appendTo($("#attachments-zone"));
 	    }
+	});
+
+	$(".icon-remove").click(function(){
+		if (confirm("Sure to destroy?") == false){
+			return;
+		}
+		var current = $(this);
+		attach_id = $(this).attr('id');
+		var jqxhr = $.ajax({
+		  type: "DELETE",
+  		url: "/attachments/" + attach_id,
+  		dataType: 'json'
+		})
+		.done(function() { 
+			current.prev().addClass('bg-yellow'); 
+			current.parent().fadeOut('slow'); 
+		})
+		.fail(function() { alert("error"); });
 	});
 
 	$(".select-block").click(function(){

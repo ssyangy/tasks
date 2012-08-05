@@ -280,6 +280,10 @@ border-top-right-radius: 5px;
 	border-right: 1px solid #EEE;
 	border-right: 1px solid rgba(0, 0, 0, .1);
 }
+.task-edit-form{
+	padding: 15px;
+	overflow-y: auto;
+}
 .task-edit-form .literal{
 	float: left;
 	border-right: 1px solid #E8E8E8;
@@ -339,4 +343,10 @@ border-top-right-radius: 5px;
 	float: right;
 	font-size:14px;
 	color: green;
+}
+.icon-remove{
+	cursor: pointer;
+}
+.bg-yellow{
+	background-color: yellow;
 }

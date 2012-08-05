@@ -3,7 +3,8 @@ class Task < ActiveRecord::Base
   
   belongs_to :author, :class_name => "User", :foreign_key => "author_id"
   belongs_to :handler, :class_name => "User", :foreign_key => "assignee_id"        
-  belongs_to :project          
+  belongs_to :project    
+  has_many :attachments      
   
   enum_attr :due, [['OverDue', 0, 'OverDue'], ['ASAP', 10, 'ASAP'], ['Today', 20, 'Today'], 
    ['Tomorrow', 30, 'Tomorrow'], ['ThisWeek', 40, 'ThisWeek'], ['NextWeek', 50, 'NextWeek'], 

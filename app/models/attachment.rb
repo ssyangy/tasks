@@ -1,9 +1,10 @@
 class Attachment < ActiveRecord::Base
 	require 'pp'
   
+  belongs_to :task
   attr_accessor :tmp_file_path
   before_save :save_to_file
-  
+  after_destroy :drop_physical_file
 
    #one convenient method to pass jq_upload the necessary information
   def to_jq_upload
@@ -34,6 +35,12 @@ class Attachment < ActiveRecord::Base
     self.tmp_file_path = file_field.tempfile
   end
   
+
+  def drop_physical_file
+    FileUtils.rm self.file_path, :force => true
+  end
+
+
   private
   def check_store_dir
     file_store = File.join Rails.root, 'public', 'attachments'

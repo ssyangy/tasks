@@ -1,5 +1,7 @@
 Tasks::Application.routes.draw do
 
+  resources :attachments
+  
   resources :projects do
     resources :tasks do
       get 'complete'
