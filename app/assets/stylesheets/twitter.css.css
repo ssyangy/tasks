@@ -350,3 +350,22 @@ border-top-right-radius: 5px;
 .bg-yellow{
 	background-color: yellow;
 }
+.devise{
+	margin-top: 30px;
+}
+.devise h1{
+	margin-bottom: 20px;
+}
+.login{
+	margin-top: 200px;
+}
+.login h1{
+	font-size: 72px;
+	margin-bottom: 30px;
+}
+.login h2{
+	margin-bottom: 50px;
+}
+.login p{
+	font-size: 20px;
+}
