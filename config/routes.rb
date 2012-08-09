@@ -2,6 +2,7 @@ Tasks::Application.routes.draw do
 
   resources :attachments
   
+  get 'projects/dashboard'
   resources :projects do
     resources :tasks do
       get 'complete'

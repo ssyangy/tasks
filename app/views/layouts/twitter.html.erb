@@ -53,12 +53,14 @@
 				    </ul>
 				  </li>
 					<li class="divider-vertical"></li>
+					<% if !@project.nil? %>
 					<li>
 						<%= text_field_tag 'instant_input', nil, :class => "span3 mt5", :placeholder => "Create task instantly..." %>
 					</li>
 					<li>
 						<div class="drop-create span2">Drop files to create...</div>
 					</li>
+					<% end %>
 				</ul>
 				<ul class="nav pull-right">
 					<li class="divider-vertical"></li>
