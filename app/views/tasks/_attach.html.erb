@@ -1,3 +1,8 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">×</button>
+  <h3>Upload attachments</h3>
+</div>
+
 <%= form_for([@project, @task], :html => {:id => "task_attachment", :class => "form-horizontal upload_support", :style=>"margin-bottom:0px;"}) do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
@@ -28,3 +33,10 @@
 <% end %>
 
 <%= javascript_include_tag "my_upload" %>
+<script>
+$(function(){
+	$(".btn-primary").click(function(){
+		window.location.href = "/projects/" + <%= @project.id %> + "/tasks/" ;
+	});
+}); 
+</script>

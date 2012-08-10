@@ -1,3 +1,8 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">×</button>
+  <h3>Create task</h3>
+</div>
+
 <%= form_for([@project, @task], :html => {:class => "form-horizontal", :style=>"margin-bottom:0px;"}, :remote => true) do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">

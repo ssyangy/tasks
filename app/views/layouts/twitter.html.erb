@@ -14,7 +14,7 @@
 		});
 
 		$("#instant_input").keypress(function() { // not work for chinese input
-			$('#myModal').modal('show');
+			$('#myModal').modal({'backdrop': 'static', 'show': true});
 			$('#myModal').on('shown', function(){
 				$('#task_title').val($('#instant_input').val());
 				$("#task_title").focus();
@@ -32,7 +32,6 @@
 </head>
 
 <body>
-
 	<div class="navbar navbar-fixed-top">
 	  <div class="navbar-inner">
 	    <div class="container">
@@ -100,10 +99,6 @@
 
 	<% if !@project.nil? && !@task.nil? %>
 	<div class="modal fade hide" id="myModal">
-	  <div class="modal-header">
-	    <button type="button" class="close" data-dismiss="modal">×</button>
-	    <h3>Create task</h3>
-	  </div>
 		<div id="task-form"><%= render "tasks/form" %></div>
 	</div>
 	<% end %>
