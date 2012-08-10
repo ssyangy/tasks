@@ -3,7 +3,7 @@
 		<%= link_to 'Delete', [@project, @task], :method => 'delete', :confirm => "Are you sure?", :class => 'fr' %><h2>Task detail</h2>
 	</div>
 	<div class="content">
-		<%= form_for([@project, @task], :html => {:id => "task-edit-form", :class => "form-horizontal", :style=>"margin-bottom:0px;"}) do |f| %>
+		<%= form_for([@project, @task], :html => {:id => "task-edit-form", :class => "form-horizontal upload_support", :style=>"margin-bottom:0px;"}) do |f| %>
 		  <% if @task.errors.any? %>
 		    <div id="error_explanation">
 		      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -54,33 +54,9 @@
 	</div>
 </div>
 
-<script> 
-$(function(){
-	$('#task-edit-form').fileupload({
-	    dataType: 'json',
-	    done: function (e, data) {
-    		$('<p/>').html(('<a href="' + data.result.url + '" target="_blank">' + data.result.name + '</a>' + '&nbsp;' + '<i class="icon-remove" id="' + data.result.id + '"></i>')).appendTo($("#attachments-zone"));
-	    }
-	});
-
-	$(".icon-remove").live("click", function(){
-		if (confirm("Sure to destroy?") == false){
-			return;
-		}
-		var current = $(this);
-		attach_id = $(this).attr('id');
-		var jqxhr = $.ajax({
-		  type: "DELETE",
-  		url: "/attachments/" + attach_id,
-  		dataType: 'json'
-		})
-		.done(function() { 
-			current.prev().addClass('bg-yellow'); 
-			current.parent().fadeOut('slow'); 
-		})
-		.fail(function() { alert("error"); });
-	});
-
+<%= javascript_include_tag "my_upload" %>
+<script>
+$(function() {
 	$(".select-block").click(function(){
 		$(this).siblings().removeClass('active');
 		$(this).addClass('active');
@@ -95,5 +71,5 @@ $(function(){
 			alert("what's " + select_id);
 		}
 	});
-}); 
+});
 </script>

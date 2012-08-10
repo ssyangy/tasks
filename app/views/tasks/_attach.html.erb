@@ -1,4 +1,4 @@
-<%= form_for([@project, @task], :html => {:id => "task_attachment", :class => "form-horizontal", :style=>"margin-bottom:0px;"}) do |f| %>
+<%= form_for([@project, @task], :html => {:id => "task_attachment", :class => "form-horizontal upload_support", :style=>"margin-bottom:0px;"}) do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -12,12 +12,14 @@
   <% end %>
 
 	<div class="modal-body task-form clearfix">
-		<div class="control-group"><i class="icon-file"></i>
-		<em>Upload attachments:</em></div>
-		<div class="control-group">
-			<div class="file-parking input-xxxlarge">Drag and drop files here ...</div>
-			-- or --<br />
-			<input class="input-file" type="file" multiple>
+		<div class="control-group" id="attachments-zone"><i class="icon-file"></i>
+			<em>Just drag and drop files here...or...</em>
+			<p><input class="input-file" type="file" multiple></p>
+			<% attachments = @task.attachments %>
+			<% attachments.each do |file| %>
+				<p><%= link_to file.file_name, file.url_path, :target => "_blank" %>
+					<i class="icon-remove" id="<%= file.id %>"></i></p>
+			<% end %>
 		</div>
 	</div>
 	<div class="modal-footer">
@@ -25,17 +27,4 @@
 	</div>
 <% end %>
 
-<script>
-
-$(function() {
-	$('#task_attachment').fileupload({
-	    dataType: 'json',
-	    done: function (e, data) {
-	        $.each(data.result, function (index, file) {
-	            $('<p/>').text(file.name).appendTo(document.body);
-	        });
-	    }
-	});
-});
-
-</script>
+<%= javascript_include_tag "my_upload" %>
