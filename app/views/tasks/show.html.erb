@@ -29,7 +29,7 @@
 						<% @project.collaborators.each do |c| %><span class="select-block assignee<%if @task.assignee_id == c.user.id%> active<%end%>"><%= c.user.username %></span><span class="hidden"><%= c.user_id%></span><% end %>
 					</div>
 					<hr />
-					<%= f.submit :class => 'btn btn-primary mr5' %><%= link_to "Cancel", project_tasks_path(@project), :class => 'btn' %>
+					<%= f.submit 'Update Text Fields', :class => 'btn btn-primary mr5' %><%= link_to "Cancel", project_tasks_path(@project), :class => 'btn' %>
 				</div>
 				<div class="fl attachments mr20">
 					<div class="control-group" id="attachments-zone"><i class="icon-file"></i>
