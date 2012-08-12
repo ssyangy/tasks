@@ -3,13 +3,13 @@
   <h3>Create task</h3>
 </div>
 
-<%= form_for([@project, @task], :html => {:class => "form-horizontal", :style=>"margin-bottom:0px;"}, :remote => true) do |f| %>
-  <% if @task.errors.any? %>
+<%= form_for([@project, @new_task], :html => {:class => "form-horizontal new_task_form", :style=>"margin-bottom:0px;"}, :remote => true) do |f| %>
+  <% if @new_task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
-      <% @task.errors.full_messages.each do |msg| %>
+      <% @new_task.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -18,7 +18,7 @@
 
 	<div class="modal-body task-form clearfix">
 			<div class="control-group"><i class="icon-pencil"></i>
-			<%= f.text_field :title, :class => 'input-xxxlarge', :placeholder => "The whole story or a short summary..." %></div>
+			<%= f.text_field :title, :class => 'input-xxxlarge new_task_title', :placeholder => "The whole story or a short summary..." %></div>
 			<div class="control-group"><i class="icon-tasks"></i>
 			<%= f.text_area :detail, :class => 'input-xxxlarge', :rows => 8, :placeholder => "Details if necessary..." %></div>
 <!--			<div class="control-group" id="due"><i class="icon-time"></i>
@@ -55,7 +55,7 @@ $(function(){
 	
 	$(".continue").click(function(){
 		$("#has_attachment").val(1);
-		$(".form-horizontal").submit();
+		$(".new_task_form").submit();
 	});		
 }); 
 </script>

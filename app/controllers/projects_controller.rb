@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  layout 'twitter'
+  layout '1column'
   
   # GET /projects
   # GET /projects.json
@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
     @project = Project.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render :layout => "white" } # new.html.erb
       format.json { render json: @project }
     end
   end

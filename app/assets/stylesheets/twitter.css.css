@@ -60,8 +60,11 @@ body, label, input, textarea, select, button {
 .page-top{
 	padding:0 12px 6px 12px;
 }
-.page-top h2{
+.page-top-2 h2{
 	float:left;
+}
+.page-top-1{
+	height: 28px;
 }
 .list{
 	width:560px;

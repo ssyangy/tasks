@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   require 'pp'
-  layout 'twitter'
+  layout '2column'
   before_filter :authenticate_user!
 
   # GET /tasks
@@ -64,7 +64,7 @@ class TasksController < ApplicationController
     # end
     # 
     # @tasks = @tasks_row.sort_by &:due
-    @task = Task.new
+    @new_task = Task.new
 #    @tasks.sort! { |t| t.due }
 #    @tasks = current_user.todos.where('status = 0').order('created_at DESC')
 #    @completed = current_user.todos.where('status = 1').order('updated_at DESC')
@@ -103,9 +103,10 @@ class TasksController < ApplicationController
   def show
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
+    @new_task = Task.new
 
     respond_to do |format|
-      format.html { render :layout => "people" } # show.html.erb
+      format.html { render :layout => "1column" } # show.html.erb
       format.json { render json: @task }
     end
   end
@@ -200,6 +201,6 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @collaborators = @project.collaborators
     
-    render :layout => "people"
+    render :layout => "1column"
   end
 end

@@ -16,8 +16,8 @@
 		$("#instant_input").keypress(function() { // not work for chinese input
 			$('#myModal').modal('show');
 			$('#myModal').on('shown', function(){
-				$('#task_title').val($('#instant_input').val());
-				$("#task_title").focus();
+				$('.new_task_title').val($('#instant_input').val());
+				$(".new_task_title").focus();
 			});
 		});
 
@@ -92,7 +92,7 @@
 		</div>
 	</div>
 
-	<% if !@project.nil? && !@task.nil? %>
+	<% if !@project.nil? && !@new_task.nil? %>
 	<div class="modal fade hide" id="myModal">
 		<div id="task-form"><%= render "tasks/form" %></div>
 	</div>
