@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DnD.io</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+	<script>
+
+	$(function() {  
+
+		$(document).ready(function(){
+			$('#instant_input').focus();
+		});
+
+		$("#instant_input").keypress(function() { // not work for chinese input
+			$('#myModal').modal('show');
+			$('#myModal').on('shown', function(){
+				$('.new_task_title').val($('#instant_input').val());
+				$(".new_task_title").focus();
+			});
+		});
+
+		$('#myModal').on('hidden', function(){
+			$('#instant_input').val('');
+			$('#instant_input').focus();
+		});
+
+	});
+
+	</script>
+</head>
+
+<body>
+
+	<div class="navbar navbar-fixed-top">
+	  <div class="navbar-inner">
+	    <div class="container">
+				<a class="brand" href="#">Tasks</a>
+				<ul class="nav">
+				  <li class="dropdown" id="menu1">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+				      Project
+				      <b class="caret"></b>
+				    </a>
+				    <ul class="dropdown-menu">
+							<% @projects = Project.all %>
+							<% @projects.each do |project| %>
+				      <li><%= link_to project.name, project_tasks_path(project) %></li>
+							<% end %>
+				      <li class="divider"></li>
+				      <li><%= link_to "+ Create Project", new_project_path %></li>
+				    </ul>
+				  </li>
+					<li class="divider-vertical"></li>
+					<li>
+						<%= text_field_tag 'instant_input', nil, :class => "span3 mt5", :placeholder => "Create task instantly..." %>
+					</li>
+					<li>
+						<div class="drop-create span2">Drop files to create...</div>
+					</li>
+				</ul>
+				<ul class="nav pull-right">
+					<li class="divider-vertical"></li>
+				  <li class="dropdown" id="menu2">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu2">
+				      <%= current_user.username %>
+				      <b class="caret"></b>
+				    </a>
+				    <ul class="dropdown-menu">
+				      <li><%= link_to 'Settings' %></li>
+				      <li class="divider"></li>
+				      <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+				    </ul>
+				  </li>
+				</ul>
+				<div class="pull-right">
+						<form class="navbar-search">
+					  	<input type="text" class="search-query span2" placeholder="Search">
+						</form>
+				</div>
+	    </div>
+	  </div>
+	</div>
+
+	<div id='page-outer'>
+		<div id='page-container'>
+			<div class="clearfix">
+				<%= render 'shared/project_menu' %>
+				<%= yield %>
+			</div>
+		</div>
+	</div>
+
+	<% if !@project.nil? && !@new_task.nil? %>
+	<div class="modal fade hide" id="myModal">
+		<div id="task-form"><%= render "tasks/form" %></div>
+	</div>
+	<% end %>
+</body>
+</html>
